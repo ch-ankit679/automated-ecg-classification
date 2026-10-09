@@ -11,14 +11,20 @@ A Streamlit-based ECG heartbeat classification application powered by a **PyTorc
 
 > **Important:** This repository is an educational/research prototype. Its predictions and visualizations are not a medical diagnosis and must not be used as a substitute for assessment by a qualified healthcare professional.
 
+## Live app
+
+The application is deployed on Streamlit Community Cloud and can be accessed here: **[automated-ecg-classification.streamlit.app](https://automated-ecg-classification.streamlit.app/)**. You can open the live app to test the ECG classifier without setting it up locally.
+
 ## Table of contents
 
+- [Live app](#live-app)
 - [Highlights](#highlights)
 - [How it works](#how-it-works)
 - [Classification labels](#classification-labels)
 - [Repository structure](#repository-structure)
 - [Getting started](#getting-started)
 - [Input CSV format](#input-csv-format)
+- [Test with sample ECG data](#test-with-sample-ecg-data)
 - [Run the application](#run-the-application)
 - [Deploy with Streamlit Community Cloud](#deploy-with-streamlit-community-cloud)
 - [Limitations](#limitations)
@@ -128,6 +134,10 @@ Notes about the current implementation:
 - The preprocessing function reads the CSV without a header and uses the **first row** for inference if the file contains multiple rows. For a straightforward test, upload one beat per file.
 - Values should be numeric and arranged in the same order and preprocessing scale as the training data.
 - The application UI mentions approximately 187 samples, but the model has a fixed LSTM input-size configuration. Ensure that the waveform length is compatible with the checkpoint and model architecture; see [Troubleshooting](#troubleshooting) if you get a tensor-size error.
+
+## Test with sample ECG data
+
+To test the application, download an ECG sample CSV file from the repository's [`data/` folder](https://github.com/ch-ankit679/automated-ecg-classification/tree/main/data). Then open the [live Streamlit app](https://automated-ecg-classification.streamlit.app/), upload the downloaded CSV, and review the prediction and visualizations. Choose a file that matches the input format and waveform-length requirements described above.
 
 ## Run the application
 
