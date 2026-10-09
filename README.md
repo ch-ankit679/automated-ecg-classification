@@ -21,7 +21,6 @@ A Streamlit-based ECG heartbeat classification application powered by a **PyTorc
 - [Input CSV format](#input-csv-format)
 - [Run the application](#run-the-application)
 - [Deploy with Streamlit Community Cloud](#deploy-with-streamlit-community-cloud)
-- [Troubleshooting](#troubleshooting)
 - [Limitations](#limitations)
 - [Dataset reference](#dataset-reference)
 - [License](#license)
@@ -148,30 +147,6 @@ Streamlit will print a local URL in the terminal (usually `http://localhost:8501
 4. If you change Python dependencies, update `requirements.txt` and redeploy the app.
 
 Keep the checkpoint path consistent with the relative path used by `model.py`. Do not commit private data, credentials, or other sensitive files to a public repository.
-
-## Troubleshooting
-
-### `ModuleNotFoundError: No module named 'scipy'`
-
-Install SciPy in the same environment used to launch the app:
-
-```bash
-pip install scipy
-```
-
-Also confirm that `scipy` appears in `requirements.txt` and redeploy after committing dependency changes. Streamlit Cloud installs packages from the requirements file during deployment.
-
-### Checkpoint not found
-
-Confirm that `model/ecg_model.pth` exists and that you start Streamlit from the repository root. The model loader uses this relative file path.
-
-### Tensor or input-size mismatch
-
-The uploaded waveform length, convolutional output length, LSTM configuration, and saved checkpoint must be compatible. Check the training notebook and preprocessing pipeline to confirm the sample length used during training. If the model expects a different length, align the input preprocessing and model configuration and retrain or load a matching checkpoint rather than arbitrarily reshaping values.
-
-### A dependency is missing
-
-Activate the intended virtual environment, run `pip install -r requirements.txt`, and restart Streamlit. For deployment errors, verify that the dependency is explicitly listed in `requirements.txt`.
 
 ## Limitations
 
